@@ -23,34 +23,17 @@
             $charactersLength = strlen($characters);
 
             $randomString = '';
-
-            function newCharachter($characters, $charactersLength) {
-
-                return $characters[rand(0, $charactersLength - 1)];
-
-            }
          
-            for ($i = 0; $i < $length; $i++) {
+            while (strlen($randomString) < $length) {
 
-                $newCharachter = newCharachter($characters, $charactersLength);
+                $newCharachter = $characters[rand(0, $charactersLength - 1)];
 
-                if ($repeat) {
+                if ($repeat || !str_contains($randomString, $newCharachter)) {
 
                     $randomString .= $newCharachter;
 
-                } else {
-
-                    if (str_contains($randomString, $newCharachter)) {
-
-                        $i--;
-
-                    } else {
-
-                        $randomString .= $newCharachter;
-
-                    }
-
-                }
+                } 
+    
             }
             
             return $randomString;
